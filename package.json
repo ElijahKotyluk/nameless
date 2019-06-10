@@ -6,5 +6,18 @@
   "repository": "git@github.com:ElijahKotyluk/component-library.git",
   "author": "Elijah Kotyluk <elijah@elijahkotyluk.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.1.2",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3"
+  }
 }
