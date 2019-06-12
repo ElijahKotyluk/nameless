@@ -1,4 +1,5 @@
 const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -6,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.bundle.js'
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -20,5 +22,8 @@ module.exports = {
         loader: "babel-loader"
       }
     ]
-  }
+  },
+  plugins: [
+    new UglifyJsPlugin({ sourceMap: true })
+  ]
 }
