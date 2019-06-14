@@ -1,9 +1,9 @@
 {
-  "name": "component-library",
+  "name": "nameless",
   "version": "0.0.0",
-  "description": "Component library",
+  "description": "A basic component UI library project for learning purposes.",
   "main": "index.js",
-  "repository": "git@github.com:ElijahKotyluk/component-library.git",
+  "repository": "git@github.com:ElijahKotyluk/nameless.git",
   "author": "Elijah Kotyluk <elijah@elijahkotyluk.com>",
   "license": "MIT",
   "private": false,
