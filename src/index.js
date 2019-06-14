@@ -1,25 +1,15 @@
 /* Nameless constructor: */
 
-const Nameless = (function () {
+var Nameless
 
-  /* Create component */
-  function createComponent(type, attributes = {}, ...children) {
-    const childElements = [].concat(...children).map(
-      child => {
-        if (child != null && child != true && child != false) {
-          return child instanceof Object
-            ? child
-            : createComponent("text", {
-              textContent: child
-            })
-        }
-      });
-    return {
-      type,
-      children: childElements,
-      props: object.assign({ children: childElements }, attributes)
-    }
-  }
+var Nameless = {
+  createElement: require('./createElement')
+}
 
-  return createComponent
-}());
+if (typeof window !== 'undefined') {
+  window.nameless = nameless;
+}
+
+if (typeof module === 'object' && typeof module.exports === 'object') {
+  module.exports = nameless;
+}
