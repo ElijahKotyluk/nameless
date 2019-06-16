@@ -6,7 +6,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     files: [
       'src/*.js',
-      'tests/*.spec.js'
+      'test/*.spec.js'
     ],
     webpack: webpackConfig,
     exclude: [
