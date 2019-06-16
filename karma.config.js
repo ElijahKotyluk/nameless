@@ -1,7 +1,7 @@
 const webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
-  config.set({
+  var configuration = {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
@@ -27,16 +27,20 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome', 'ChromeHeadless', 'MyHeadlessChrome'],
+    browsers: ['Chrome'],
     customLaunchers: {
-      MyHeadlessChrome: {
-        base: 'ChromeHeadless',
-        flags: ['--disable-translate', '--disable-extensions',
-                '--no-first-run', '--disable-background-networking',
-                '--remote-debugging-port=9223']
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
       }
     },
-    //singleRun: false,
+    singleRun: true,
     concurrency: Infinity
-  })
+  }
+
+  if(process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+  }
+
+  config.set(configuration);
 }
