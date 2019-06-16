@@ -8,9 +8,8 @@
  * @ param {array} [children]: Children of element
 */
 
-module.exports = createElement(type, props = {}, ...children) {
-  //TODO: See which is proper assignment, might just be preference.
-  //props = assign({}, props)
+export function createElement(type, props, ...children) {
+  props = assign({}, props)
 
   let childElements = [].concat(...children).reduce(
     (acc, child) => {
@@ -19,7 +18,7 @@ module.exports = createElement(type, props = {}, ...children) {
         if (child instanceof Object) {
           acc.push(child)
         } else {
-          acc.push(createElement("text" {
+          acc.push(createElement("text", {
             textContent: child
           }));
         }
@@ -31,6 +30,6 @@ module.exports = createElement(type, props = {}, ...children) {
   return {
     type,
     children: childElements,
-    props: object.assign({ children: childElements }, props)
+    props: props || {}
   }
 }
