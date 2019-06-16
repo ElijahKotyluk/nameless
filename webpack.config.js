@@ -1,13 +1,29 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const env = require('yargs').argv.env
+const pkg = require('./package.json')
+
+let libraryName = pkg.name
+
+if (env === 'build') {
+  mode = 'production'
+  outputFile = libraryName + '.min.js';
+} else {
+  mode = 'development'
+  outputFile = libraryName + '.js';
+}
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'index.bundle.js'
+    path: __dirname + '/lib',
+    filename: outputFile,
+    library: libraryName,
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -22,6 +38,10 @@ module.exports = {
         loader: "babel-loader"
       }
     ]
+  },
+  resolve: {
+    modules: [path.resolve('./node_modules'), path.resolve('./src')],
+    extensions: ['.json', '.js']
   },
   plugins: [
     new UglifyJsPlugin({ sourceMap: true })
