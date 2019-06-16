@@ -26,9 +26,17 @@ module.exports = function(config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
+    autoWatch: false,
+    browsers: ['Chrome', 'ChromeHeadless', 'MyHeadlessChrome'],
+    customLaunchers: {
+      MyHeadlessChrome: {
+        base: 'ChromeHeadless',
+        flags: ['--disable-translate', '--disable-extensions',
+                '--no-first-run', '--disable-background-networking',
+                '--remote-debugging-port=9223']
+      }
+    },
+    //singleRun: false,
     concurrency: Infinity
   })
 }
