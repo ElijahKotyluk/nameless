@@ -13,7 +13,7 @@ module.exports = function(config) {
     ],
     preprocessors: {
       'src/*.js': ['webpack', 'sourcemap'],
-      'tests/*.spec.js': ['webpack', 'sourcemap']
+      'test/*.spec.js': ['webpack', 'sourcemap']
     },
     plugins: [
       'karma-webpack',
@@ -34,7 +34,7 @@ module.exports = function(config) {
         flags: ['--no-sandbox']
       }
     },
-    singleRun: true,
+    singleRun: false,
     concurrency: Infinity
   }
 

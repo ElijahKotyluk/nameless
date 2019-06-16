@@ -34,6 +34,10 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        include: [
+          path.join(__dirname, 'src'),
+          path.join(__dirname, 'test')
+        ],
         exclude: /node_modules/,
         loader: "babel-loader"
       }

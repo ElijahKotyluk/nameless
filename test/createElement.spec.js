@@ -1,3 +1,5 @@
+import { createElement } from '../src/createElement';
+
 describe("A suite is just a function", function() {
   var a;
 
