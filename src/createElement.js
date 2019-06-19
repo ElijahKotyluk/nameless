@@ -2,34 +2,24 @@
  * Create element method:
  *
  * @param {string} type: Type of element
- *
  * @param {object | null | undefined} [props]: Element properties
- *
  * @ param {array} [children]: Children of element
 */
 
-export function createElement(type, props, ...children) {
-  props = assign({}, props)
-
-  let childElements = [].concat(...children).reduce(
-    (acc, child) => {
-      if (child != null && child != true && child != false) {
-
-        if (child instanceof Object) {
-          acc.push(child)
+export default function createElement(type, props, ...children) {
+    let childElements = []
+    for(let i = 0; i< children.length;i++){
+        if (typeof children[i] === 'boolean' || children[i] === undefined || children === null) continue
+        if(children[i] instanceof Array) {
+            childElements = childElements.concat(children[i])
         } else {
-          acc.push(createElement("text", {
-            textContent: child
-          }));
+            childElements.push(children[i])
         }
-      }
+    }
 
-      return acc;
-    });
-
-  return {
-    type,
-    children: childElements,
-    props: props || {}
-  }
+    return {
+        children: childElements,
+        props: props || {},
+        type
+    }
 }

@@ -1,0 +1,21 @@
+{
+  "name": "createElement",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elijah Kotyluk",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "genePic": "dot -Tpng -o hello.png tmp.dot",
+    "compile": "./node_modules/.bin/babel src --out-dir build",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "webpack": "^4.34.0"
+  }
+}

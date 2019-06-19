@@ -7,9 +7,9 @@ var Nameless = {
 }
 
 if (typeof window !== 'undefined') {
-  window.nameless = nameless;
+  window.nameless = Nameless;
 }
 
 if (typeof module === 'object' && typeof module.exports === 'object') {
-  module.exports = nameless;
+  module.exports = Nameless;
 }
