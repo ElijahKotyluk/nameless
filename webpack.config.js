@@ -1,6 +1,7 @@
-const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+
 const env = require('yargs').argv.env
+const path = require('path')
 const pkg = require('./package.json')
 
 let libraryName = pkg.name
@@ -23,6 +24,11 @@ module.exports = {
     umdNamedDefine: true,
     globalObject: "typeof self !== 'undefined' ? self : this"
   },
+  devServer:{
+    port: 3000,
+    contentBase: __dirname + '/lib',
+    inline: true
+  },
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -35,6 +41,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
+          path.join(__dirname, 'lib'),
           path.join(__dirname, 'src'),
           path.join(__dirname, 'test')
         ],
@@ -43,11 +50,11 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimizer: [new TerserPlugin()]
+  },
   resolve: {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
-  },
-  plugins: [
-    new UglifyJsPlugin({ sourceMap: true })
-  ]
+  }
 }
