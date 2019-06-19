@@ -1,6 +1,9 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["babel-plugin-add-module-exports"],
+  "plugins": [
+    ["babel-plugin-transform-react-jsx", { "pragma": "nameless" }],
+    "babel-plugin-add-module-exports"
+  ],
   "env": {
     "test": {
       "plugins": [
