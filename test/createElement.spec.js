@@ -1,10 +1,22 @@
-import createElement from '../src/createElement';
+import createElement from '../src/createElement'
 
 describe('createElement(jsx)', () => {
-  it('should return an element', () => {
-    let el;
 
+  let el
+
+  it('should return an element', () => {
+
+    // createElement function does not throw error:
     expect( () => el = createElement('test') ).not.toThrow();
-    expect(el).toEqual(jasmine.any(Object));
+
+    // el is an object:
+    expect(el).toEqual(jasmine.any(Object))
+  })
+
+  it('should contain object keys; children, props, and type', () => {
+
+    expect(Object.keys(el)).toContain('children')
+    expect(Object.keys(el)).toContain('props')
+    expect(Object.keys(el)).toContain('type')
   })
 })
