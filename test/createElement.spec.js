@@ -1,11 +1,10 @@
-import { createElement } from '../src/createElement';
+import createElement from '../src/createElement';
 
-describe("A suite is just a function", function() {
-  var a;
+describe('createElement(jsx)', () => {
+  it('should return an element', () => {
+    let el;
 
-  it("and so is a spec", function() {
-    a = true;
-
-    expect(a).toBe(true);
-  });
-});
+    expect( () => el = createElement('test') ).not.toThrow();
+    expect(el).toEqual(jasmine.any(Object));
+  })
+})

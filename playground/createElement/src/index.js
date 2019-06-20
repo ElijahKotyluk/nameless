@@ -8,4 +8,4 @@ var test = (
   </div>
 )
 
-console.log(test)
+console.log('test element:', test)
