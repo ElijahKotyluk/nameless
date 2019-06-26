@@ -3,7 +3,8 @@
 var Nameless
 
 var Nameless = {
-  createElement: require('./createElement')
+  createElement: require('./createElement'),
+  render: require('./render')
 }
 
 if (typeof window !== 'undefined') {
