@@ -11,7 +11,7 @@ export default function createElement(type, props, ...children) {
     // {array}: Contains children of created element.
     let childElements = []
 
-    for(let i = 0; i< children.length;i++){
+    for(let i = 0; i < children.length; i++){
         if (typeof children[i] === 'boolean' || children[i] === undefined || children === null) continue
         if(children[i] instanceof Array) {
             childElements = childElements.concat(children[i])
@@ -22,7 +22,7 @@ export default function createElement(type, props, ...children) {
 
     return {
         children: childElements,
-        props: props || {},
-        type
+        nodeName: type,
+        props: props || {}
     }
 }

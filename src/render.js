@@ -2,20 +2,20 @@ export default function render(vnode, parent) {
 
   let dom
 
-  if (typeof vnode === 'string') {
+  if (typeof vnode == 'string') {
     dom = document.createTextNode(vnode)
     parent.appendChild(dom)
 
-  } else if (typeof vnode.nodeName === 'string') {
+  } else if (typeof vnode.nodeName == 'string') {
     dom = document.createElement(vnode.nodeName)
-    setAttrs(dom.vnode.props)
+    setAttrs(dom, vnode.props)
     parent.appendChild(dom)
 
     for (let i = 0; i < vnode.children.length; i++) {
       render(vnode.children[i], dom)
     }
 
-  } else if (typeof vnode.nodeName === 'function') {
+  } else if (typeof vnode.nodeName == 'function') {
     let fn = vnode.nodeName
     let innerVnode = fn.prototype.render()
     render(innerVnode, parent)
