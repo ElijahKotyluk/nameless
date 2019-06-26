@@ -13,10 +13,10 @@ describe('createElement(jsx)', () => {
     expect(el).toEqual(jasmine.any(Object))
   })
 
-  it('should contain object keys; children, props, and type', () => {
+  it('should contain object keys; children, props, and nodeName', () => {
 
     expect(Object.keys(el)).toContain('children')
     expect(Object.keys(el)).toContain('props')
-    expect(Object.keys(el)).toContain('type')
+    expect(Object.keys(el)).toContain('nodeName')
   })
 })
