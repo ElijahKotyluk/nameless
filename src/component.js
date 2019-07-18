@@ -18,7 +18,7 @@ export default class Component {
 
 function getDOM(component) {
     let rendered = component.__rendered
-    while (rendered instanceof Component) { //判断对象是否是dom
+    while (rendered instanceof Component) {
         rendered = rendered.__rendered
     }
     return rendered
