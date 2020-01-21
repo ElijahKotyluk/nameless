@@ -20,7 +20,7 @@
     ]
   },
   "scripts": {
-    "lint": "wotan -m @fimbul/valtyr test/** src/** -e 'test/__snapshots__'",
+    "lint": "wotan -m @fimbul/valtyr __tests__/** src/** -e '__tests__/__snapshots__'",
     "build": "tsc",
     "lint:fix": "yarn lint --fix",
     "test:coverage": "jest --coverage",
